@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 100,
   },
-  feelsLikeTitle: {fontSize: 20, alignSelf: 'flex-end', marginTop: 20},
-  weatherTitle: {fontSize: 18, alignSelf: 'flex-start', marginTop: 5},
+  feelsLikeTitle: {fontSize: 18, alignSelf: 'flex-end', marginTop: 20},
+  weatherTitle: {fontSize: 22, alignSelf: 'flex-start', marginTop: 5},
   weatherDescription: {fontSize: 18, alignSelf: 'flex-start', marginTop: 5},
 });
