@@ -18,6 +18,9 @@ export function NavigationStack() {
         <Stack.Screen
           name={RouteName.WeatherDetailsScreen}
           component={WeatherDetailsScreen}
+          options={{
+            title: '',
+          }}
         />
       </Stack.Navigator>
     </NavigationContainer>

@@ -6,6 +6,8 @@ export default class DetailsScreen extends React.Component {
   constructor(props) {
     super(props);
     this.data = this.props.route.params.weatherDetails || [];
+    this.cityName = this.props.route.params.cityName || '';
+    this.props.navigation.setOptions({title: this.cityName});
   }
 
   onPress = (details) => {

@@ -42,6 +42,7 @@ export default class HomeScreen extends React.Component {
         this.isLoaderVisible(false);
         navigation.navigate(RouteName.CityWeatherScreen, {
           weatherDetails: response,
+          cityName: cityName,
         });
       })
       .catch(() => {
