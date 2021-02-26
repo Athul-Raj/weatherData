@@ -1,20 +1,22 @@
 import React from 'react';
 
 import {
+  ActivityIndicator,
   Button,
   StyleSheet,
-  ActivityIndicator,
-  View,
   TextInput,
+  View,
 } from 'react-native';
 import {RouteName} from '../utility/Routes';
 import API from '../data/WebService';
+import ErrorAlert from './components/ErrorAlert';
 
 export default class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       cityName: '',
+      lookUpButtonDisabled: true,
       showLoader: false,
       showError: false,
     };
@@ -23,6 +25,7 @@ export default class HomeScreen extends React.Component {
   onChangeText = (text) => {
     this.setState({
       cityName: text,
+      lookUpButtonDisabled: text.length <= 0,
     });
   };
 
@@ -41,20 +44,32 @@ export default class HomeScreen extends React.Component {
           weatherDetails: response,
         });
       })
-      .catch((err) => {
-        //     todo show alert
-        console.warn('UI: ERRRR', err);
+      .catch(() => {
         this.isLoaderVisible(false);
+        this.isAlertVisible(true);
       });
+  };
+
+  isAlertVisible = (showAlert) => {
+    this.setState({
+      showError: showAlert,
+    });
   };
 
   render() {
     const {navigation} = this.props;
-    const {cityName, showLoader, showError} = this.state;
+    const {cityName, showLoader, showError, lookUpButtonDisabled} = this.state;
 
     return (
       <View style={styles.container}>
         {showLoader && <ActivityIndicator size="large" color="black" />}
+        {showError && (
+          <ErrorAlert
+            message={'Please retry with different City Name'}
+            hideSelf={() => this.isAlertVisible(false)}
+          />
+        )}
+
         <TextInput
           style={styles.cityTextInput}
           onChangeText={(text) => this.onChangeText(text)}
@@ -64,6 +79,7 @@ export default class HomeScreen extends React.Component {
         <Button
           title="Look Up"
           onPress={() => this.onLookUpClicked(navigation, cityName)}
+          disabled={lookUpButtonDisabled}
         />
       </View>
     );

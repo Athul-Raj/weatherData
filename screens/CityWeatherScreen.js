@@ -6,27 +6,6 @@ export default class DetailsScreen extends React.Component {
   constructor(props) {
     super(props);
     this.data = this.props.route.params.weatherDetails || [];
-
-    // this.data = [
-    //   {
-    //     feelsLike: 277.3,
-    //     temp: 274.1,
-    //     weather: 'Clear',
-    //     weatherDescription: 'clear sky',
-    //   },
-    //   {
-    //     feelsLike: 278.91,
-    //     temp: 275.94,
-    //     weather: 'Clear',
-    //     weatherDescription: 'clear sky',
-    //   },
-    //   {
-    //     feelsLike: 282.92,
-    //     temp: 279.9,
-    //     weather: 'Clear',
-    //     weatherDescription: 'clear sky',
-    //   },
-    // ];
   }
 
   onPress = (details) => {

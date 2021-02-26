@@ -1,12 +1,13 @@
 import React from 'react';
 
-import {Alert} from 'react-native';
+import {Alert, View} from 'react-native';
 
-export default function ErrorAlert() {
-  return Alert.alert(
-    'Alert Title',
-    'My Alert Msg',
-    [{text: 'OK', onPress: () => console.log('OK Pressed')}],
-    {cancelable: true},
-  );
+function renderAlert(message, hideSelf) {
+  Alert.alert('Error', message, [{text: 'OK', onPress: () => hideSelf()}], {
+    cancelable: false,
+  });
+}
+
+export default function ErrorAlert({message, hideSelf}) {
+  return <View>{renderAlert(message, hideSelf)}</View>;
 }
