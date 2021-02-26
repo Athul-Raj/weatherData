@@ -40,4 +40,9 @@ export default class DataManager {
       );
     });
   }
+
+  static _convertFtoC(tempInF: string): string {
+    const F = parseFloat(tempInF || 0);
+    return (5 / 9) * (F - 32);
+  }
 }

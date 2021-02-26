@@ -34,7 +34,7 @@ export default class DetailsScreen extends React.Component {
           renderItem={({item}) => {
             return this.Item(item);
           }}
-          keyExtractor={(item) => item.id}
+          keyExtractor={(item, index) => index.toString()}
         />
       </View>
     );
