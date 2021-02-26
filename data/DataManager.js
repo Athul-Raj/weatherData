@@ -1,11 +1,16 @@
 import {ResponseSuccessModel} from './models/basemodel/ResponseSuccessModel';
 import {Main, Weather, WeatherDetails} from './models/WeatherDetails';
 
-import API from './remote/WebService';
+import RemoteManager from './remote/RemoteManager';
 
 export default class DataManager {
+  constructor() {
+    this.remoteManager = new RemoteManager();
+  }
+
   getWeatherDetailsOfCity = async (city) => {
-    return API.getWeatherForCity(city)
+    return this.remoteManager
+      .getWeatherForCity(city)
       .then((response) => {
         return this._parseWeatherResponse(response);
       })
