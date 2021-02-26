@@ -8,12 +8,13 @@ import {
   View,
 } from 'react-native';
 import {RouteName} from '../utility/Routes';
-import API from '../data/WebService';
+import DataManager from '../data/DataManager';
 import ErrorAlert from './components/ErrorAlert';
 
 export default class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
+    this.dataManager = new DataManager();
     this.state = {
       cityName: '',
       lookUpButtonDisabled: true,
@@ -37,7 +38,9 @@ export default class HomeScreen extends React.Component {
 
   onLookUpClicked = async (navigation, cityName) => {
     this.isLoaderVisible(true);
-    API.getWeatherForCity(cityName)
+
+    this.dataManager
+      .getWeatherDetailsOfCity(cityName)
       .then((response) => {
         this.isLoaderVisible(false);
         navigation.navigate(RouteName.CityWeatherScreen, {
