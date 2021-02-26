@@ -1,6 +1,4 @@
 export class WeatherDetails {
-  // weathers: Weather;
-  // main: Main;
   weather: string;
   weatherDescription: string;
   feelsLike: string;
@@ -12,8 +10,6 @@ export class WeatherDetails {
     feelsLike: string,
     temp: string,
   ) {
-    // this.weathers = weathers;
-    // this.main = main;
     this.weather = weather;
     this.weatherDescription = weatherDescription;
     this.feelsLike = feelsLike;

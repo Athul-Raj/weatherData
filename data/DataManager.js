@@ -16,13 +16,6 @@ export default class DataManager {
 
   _parseWeatherResponse(resp: ResponseSuccessModel): WeatherDetails[] {
     return resp.data.map((R) => {
-      // const weathers: [Weather] = R.weather.map((singleWeather) => {
-      //   return {
-      //     name: singleWeather.main || '',
-      //     description: singleWeather.description || '',
-      //   };
-      // });
-
       const weathers: Weather = {
         name: R.weather[0].main || '',
         description: R.weather[0].description || '',
